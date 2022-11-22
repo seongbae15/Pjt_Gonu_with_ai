@@ -334,5 +334,79 @@ namespace GonuAI
             }
             return 0.0f;
         }
+
+        public bool DisplayBoard(int turnCount, int lastMove, GamePlayer blackPlayer, GamePlayer whitePlayer)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine($"● : {blackPlayer}, ○ : {whitePlayer}");
+            Console.Write($"Turn : {turnCount}, ");
+            Console.WriteLine($"{GetTurnMark()}");
+            Console.WriteLine(Environment.NewLine);
+
+            if (IsValidFirstStage())
+            {
+                Console.WriteLine("Step 1.....");
+            }
+            else
+            {
+                Console.WriteLine("Step 2.....");
+            }
+
+            if (lastMove != 0)
+            {
+                Console.WriteLine($"Last Move - Row: {(lastMove - 1) / 3}, Column: {(lastMove - 1) % 3}");
+            }
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine($"\t{GetGameBoardValue(0, 0)}\t\t{GetGameBoardValue(0, 1)}\t\t{GetGameBoardValue(0, 2)}");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine($"\t{GetGameBoardValue(1, 0)}\t\t{GetGameBoardValue(1, 1)}\t\t{GetGameBoardValue(1, 2)}");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine($"\t{GetGameBoardValue(2, 0)}\t\t{GetGameBoardValue(2, 1)}\t\t{GetGameBoardValue(2, 2)}");
+
+            bool isFinish = IsFinalState();
+            Console.WriteLine(Environment.NewLine);
+            switch (gameWinner)
+            {
+                case 1:
+                    Console.WriteLine("● is Winner");
+                    break;
+                case 2:
+                    Console.WriteLine("○ is Winner");
+                    break;
+                default:
+                    Console.WriteLine("Game is going");
+                    break;
+            }
+            return isFinish;
+
+        }
+
+        private string GetTurnMark()
+        {
+            return nextTurn == 1 ? "●" : "○";
+        }
+
+        private string GetGameBoardValue(int row, int col)
+        {
+            switch(boardState[row, col])
+            {
+                case 1:
+                    return "●";
+                case 2:
+                    return "○";
+                default:
+                    return "＋";
+            }
+        }
     }
 }

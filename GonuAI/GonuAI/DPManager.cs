@@ -171,5 +171,46 @@ namespace GonuAI
             num43 = 0;
             num44 = 0;
         }
+
+        public int GetNextMove(int boardStateKey)
+        {
+            IEnumerable<int> actionCandidates = GetNextMoveCandidate(boardStateKey);
+            if (actionCandidates.Count() == 0)
+                return 0;
+
+            return actionCandidates.ElementAt(Utilities.random.Next(0, actionCandidates.Count()));
+
+        }
+        public IEnumerable<int> GetNextMoveCandidate(int boardStateKey)
+        {
+            float selectedExpectation = 0f;
+            GameState gameState = new GameState(boardStateKey);
+            Dictionary<int, float> actionCandidateDictionary = new Dictionary<int, float>();
+
+            for (int i = GameParameters.actionMinIdx; i <= GameParameters.actionMaxIdx; i++)
+            {
+                if (gameState.IsValidMove(i))
+                {
+                    GameState nextState = gameState.GetNextState(i);
+                    float reward = nextState.GetReward();
+                    float actionExpectation = reward + discountFactor * stateValueFunc[nextState.boardStateKey];
+                    actionCandidateDictionary.Add(i, actionExpectation);
+                }
+            }
+
+            if (actionCandidateDictionary.Count == 0)
+                return new List<int>();
+
+            if(gameState.nextTurn == 1)
+            {
+                selectedExpectation = actionCandidateDictionary.Select(e => e.Value).Max();
+            }
+            else if (gameState.nextTurn == 2)
+            {
+                selectedExpectation = actionCandidateDictionary.Select(e => e.Value).Min();
+            }
+            return actionCandidateDictionary.Where(e => e.Value == selectedExpectation).Select(e => e.Key);
+
+        }
     }
 }

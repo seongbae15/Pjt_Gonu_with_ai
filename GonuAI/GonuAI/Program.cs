@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace GonuAI
 {
-    internal class Program
+    class Program
     {
-        private static DPManager dpManager;
+        public static DPManager dpManager;
+        public static GameManager gameManager;
 
         static void Main(string[] args)
         {
             dpManager = new DPManager();
+            gameManager = new GameManager();
 
             bool isShowMenu = true;
 
@@ -34,7 +36,7 @@ namespace GonuAI
             Console.WriteLine("4) Start SARSA.");
             Console.WriteLine("5) Save SARSA Value Function.");
             Console.WriteLine("6) Load SARSA Value Function.");
-            Console.WriteLine("71) Start Q-Learning.");
+            Console.WriteLine("7) Start Q-Learning.");
             Console.WriteLine("8) Save Q-Learning Value Function.");
             Console.WriteLine("9) Load Q-Learning Value Function.");
             Console.WriteLine("10) Start Game");
@@ -64,6 +66,7 @@ namespace GonuAI
                 case "9":
                     return true;
                 case "10":
+                    gameManager.PlayGame();
                     return true;
                 case "11":
                     return false;

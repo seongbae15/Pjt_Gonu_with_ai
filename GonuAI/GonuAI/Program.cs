@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace GonuAI
 {
+    public enum QFunctionType
+    {
+        SARSA,
+        QLEARNING,
+    }
     class Program
     {
         public static DPManager dpManager;
         public static GameManager gameManager;
+        public static SARSAManager sarsaManger;
 
         static void Main(string[] args)
         {
             dpManager = new DPManager();
+            sarsaManger = new SARSAManager();
             gameManager = new GameManager();
 
             bool isShowMenu = true;
@@ -54,6 +61,7 @@ namespace GonuAI
                 case "3":
                     return true;
                 case "4":
+                    sarsaManger.UpdateSARSA();
                     return true;
                 case "5":
                     return true;

@@ -335,6 +335,17 @@ namespace GonuAI
             return 0.0f;
         }
 
+        public int CountValidMove()
+        {
+            int count = 0;
+            for (int i=GameParameters.actionMinIdx; i<=GameParameters.actionMaxIdx; i++)
+            {
+                if (IsValidMove(i))
+                    count++;
+            }
+            return count;
+        }
+
         public bool DisplayBoard(int turnCount, int lastMove, GamePlayer blackPlayer, GamePlayer whitePlayer)
         {
             Console.Clear();

@@ -404,7 +404,7 @@ namespace GonuAI
 
         private string GetTurnMark()
         {
-            return nextTurn == 1 ? "●" : "○";
+            return nextTurn == 1 ? "○" : "●";
         }
 
         private string GetGameBoardValue(int row, int col)
@@ -412,9 +412,9 @@ namespace GonuAI
             switch(boardState[row, col])
             {
                 case 1:
-                    return "●";
-                case 2:
                     return "○";
+                case 2:
+                    return "●";
                 default:
                     return "＋";
             }

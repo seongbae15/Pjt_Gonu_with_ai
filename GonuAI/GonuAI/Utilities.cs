@@ -97,6 +97,21 @@ namespace GonuAI
             return actionCandidates.ElementAt(random.Next(0, actionCandidates.Count()));
         }
 
+        public static float GetGreedyActionValue(int turn, Dictionary<int, float> actionValues)
+        {
+            if (actionValues.Count == 0)
+                return 0f;
+            if (turn == 1)
+            {
+                return actionValues.Select(e => e.Value).Max();
+            }
+            else if (turn == 2)
+            {
+                return actionValues.Select(e => e.Value).Min();
+            }
+            return 0f;
+        }
+
         public static float EvaluateValueFunction(QFunctionType functionType)
         {
             if (Program.dpManager.stateValueFunc.Count == 0)
@@ -156,6 +171,8 @@ namespace GonuAI
 
             if (functionType == QFunctionType.SARSA)
                 QActionCandidate = Program.sarsaManger.GetNextMoveCandidate(boardStateKey);
+            else if(functionType == QFunctionType.QLEARNING)
+                QActionCandidate = Program.qLearningManager.GetNextMoveCandidate(boardStateKey);
             else
                 QActionCandidate = new List<int>();
 

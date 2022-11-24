@@ -16,11 +16,13 @@ namespace GonuAI
         public static DPManager dpManager;
         public static GameManager gameManager;
         public static SARSAManager sarsaManger;
+        public static QLearningManager qLearningManager;
 
         static void Main(string[] args)
         {
             dpManager = new DPManager();
             sarsaManger = new SARSAManager();
+            qLearningManager = new QLearningManager();
             gameManager = new GameManager();
 
             bool isShowMenu = true;
@@ -29,7 +31,6 @@ namespace GonuAI
             {
                 isShowMenu = MainMenu();
             }
-
         }
 
         private static bool MainMenu()
@@ -68,6 +69,7 @@ namespace GonuAI
                 case "6":
                     return true;
                 case "7":
+                    qLearningManager.UpdateByQLearning();
                     return true;
                 case "8":
                     return true;

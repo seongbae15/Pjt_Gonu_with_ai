@@ -352,7 +352,7 @@ namespace GonuAI
             Console.WriteLine();
             Console.WriteLine(Environment.NewLine);
 
-            Console.WriteLine($"● : {blackPlayer}, ○ : {whitePlayer}");
+            Console.WriteLine($"○ : {blackPlayer}, ● : {whitePlayer}");
             Console.Write($"Turn : {turnCount}, ");
             Console.WriteLine($"{GetTurnMark()}");
             Console.WriteLine(Environment.NewLine);

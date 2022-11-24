@@ -9,6 +9,8 @@ namespace GonuAI
     public enum GamePlayer
     {
         DynamicProgramming,
+        SARSA,
+        QLearning,
         Human,
         None,
     }
@@ -68,6 +70,12 @@ namespace GonuAI
                         {
                             case GamePlayer.DynamicProgramming:
                                 gameMove = Program.dpManager.GetNextMove(gameState.boardStateKey);
+                                break;
+                            case GamePlayer.SARSA:
+                                gameMove = Program.sarsaManger.GetNextMove(gameState.boardStateKey);
+                                break;
+                            case GamePlayer.QLearning:
+                                gameMove = Program.qLearningManager.GetNextMove(gameState.boardStateKey);
                                 break;
                         }
                     }
@@ -143,8 +151,30 @@ namespace GonuAI
                         }
                         break;
                     case "2":
+                        if (Program.sarsaManger.actionValueFunction.Count > 0)
+                        {
+                            return GamePlayer.SARSA;
+                        }
+                        else
+                        {
+                            Console.Write("행동 가치 함수가 정의되어 있지 않습니다. SARSA 훈련을 수행하거나, 가치 함수를 읽어오세요.");
+                            Console.WriteLine(Environment.NewLine);
+                            Console.Write("아무 키나 누르세요:");
+                            Console.ReadLine();
+                        }
                         break;
                     case "3":
+                        if (Program.qLearningManager.actionValueFunction.Count > 0)
+                        {
+                            return GamePlayer.QLearning;
+                        }
+                        else
+                        {
+                            Console.Write("행동 가치 함수가 정의되어 있지 않습니다. Q-Learning 훈련을 수행하거나, 가치 함수를 읽어오세요.");
+                            Console.WriteLine(Environment.NewLine);
+                            Console.Write("아무 키나 누르세요:");
+                            Console.ReadLine();
+                        }
                         break;
                     case "4":
                         Console.Write("사람을 선택하셨습니다..");

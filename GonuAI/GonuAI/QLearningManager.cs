@@ -116,5 +116,11 @@ namespace GonuAI
             return Utilities.GetGreedyActionCandidate(gameState.nextTurn, actionValueFunction[boardStateKey]);
         }
 
+        public int GetNextMove(int boardStateKey)
+        {
+            GameState gameState = new GameState(boardStateKey);
+            return Utilities.GetGreedyAction(gameState.nextTurn, actionValueFunction[boardStateKey]);
+        }
+
     }
 }

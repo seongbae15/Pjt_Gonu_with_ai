@@ -112,6 +112,14 @@ namespace GonuAI
             return 0f;
         }
 
+        public static int GetGreedyAction(int turn, Dictionary<int, float> actionValues)
+        {
+            IEnumerable<int> actionCandidates = GetGreedyActionCandidate(turn, actionValues);
+            if (actionCandidates.Count() == 0)
+                return 0;
+            return actionCandidates.ElementAt(random.Next(0, actionCandidates.Count()));
+        }
+
         public static float EvaluateValueFunction(QFunctionType functionType)
         {
             if (Program.dpManager.stateValueFunc.Count == 0)

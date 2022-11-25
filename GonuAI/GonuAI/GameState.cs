@@ -389,10 +389,10 @@ namespace GonuAI
             switch (gameWinner)
             {
                 case 1:
-                    Console.WriteLine("● is Winner");
+                    Console.WriteLine("○ is Winner");
                     break;
                 case 2:
-                    Console.WriteLine("○ is Winner");
+                    Console.WriteLine("● is Winner");
                     break;
                 default:
                     Console.WriteLine("Game is going");

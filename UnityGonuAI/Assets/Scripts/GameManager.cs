@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public int turn { private set; get; }
     public int phase { private set; get; }
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         // TurnÀÌ È¦¼ö Â¦¼ö ¿©ºÎ·Î Player 1, 2 ÆÇ´Ü
         if (turn % 2 == 0)
         {
-            playerName = "whete";
+            playerName = "white";
         }
         else
         {

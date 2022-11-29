@@ -10,11 +10,6 @@ public class ControllerManager : MonoBehaviour
     [SerializeField]
     private LayerMask stoneLayerMask;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -23,15 +18,16 @@ public class ControllerManager : MonoBehaviour
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitPoint = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, pointLayerMask);
-            RaycastHit2D hitSton = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, stoneLayerMask);
+            RaycastHit2D hitStone = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, stoneLayerMask);
 
-            if (hitSton)
+            if (hitStone)
             {
                 Debug.Log("Try Again other places");
             }
             else if (hitPoint)
             {
-                GameManager.Instance.placeStone();
+                Transform stonePlaceTransform = hitPoint.transform;
+                GameManager.Instance.PlaceStone(stonePlaceTransform);
             }
         }
     }

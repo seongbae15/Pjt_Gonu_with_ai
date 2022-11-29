@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public string playerName { get; private set; }
     public int onStoneCount { get; private set; }
 
+    [SerializeField]
+    private GameObject stone;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +16,14 @@ public class Player : MonoBehaviour
         playerName = " ";    
     }
 
-    public void UpdateStoneCount()
+    public void PlaceStone(Transform stonePlaceTransform)
+    {
+        Instantiate(stone, stonePlaceTransform);
+        Debug.Log("Create Stone");
+        UpdateStoneCount();
+    }
+
+    private void UpdateStoneCount()
     {
         onStoneCount++;
     }

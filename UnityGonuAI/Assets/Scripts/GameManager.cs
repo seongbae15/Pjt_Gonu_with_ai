@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void placeStone()
+    public void PlaceStone(Transform stonePlaceTransform)
     {
         string playerName = "";
         // Phase 1
@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            players[turn % 2].UpdateStoneCount();
+            players[turn % 2].PlaceStone(stonePlaceTransform);
             totalStoneCount++;
+            turn++;
         }
         Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {totalStoneCount}");
-        turn++;
     }
 }

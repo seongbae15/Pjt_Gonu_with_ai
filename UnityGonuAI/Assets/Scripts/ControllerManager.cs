@@ -27,11 +27,11 @@ public class ControllerManager : MonoBehaviour
 
             if (hitSton)
             {
-                Debug.Log("Stone");
+                Debug.Log("Try Again other places");
             }
             else if (hitPoint)
             {
-                Debug.Log("Point");
+                GameManager.Instance.placeStone();
             }
         }
     }

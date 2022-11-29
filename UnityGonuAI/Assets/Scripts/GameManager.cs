@@ -17,13 +17,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public int turn { private set; get; }
     public int phase { private set; get; }
-
     [SerializeField]
     private Player[] players = new Player[2];
-
+    private int totalStoneCount = 0;
+    private int maxStoneLimit = 8;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
     public void placeStone()
     {
         string playerName = "";
-        // TurnÀÌ È¦¼ö Â¦¼ö ¿©ºÎ·Î Player 1, 2 ÆÇ´Ü
+        // Phase 1
         if (turn % 2 == 0)
         {
             playerName = "white";
@@ -49,16 +48,17 @@ public class GameManager : MonoBehaviour
         {
             playerName = "black";
         }
-        players[turn % 2].UpdateStoneCount();
-
-
-        int totalStoneCount = 0;
-        for (int i=0; i < players.Length; i++)
+        if (totalStoneCount == maxStoneLimit)
         {
-            totalStoneCount += players[i].onBoardStoneCount;   
+            // Phase 2
+            Debug.Log("This is Phase 2");
         }
-
-        Debug.Log($"{turn} : {playerName} / playerOnboardStone : {players[turn % 2].onBoardStoneCount} /total stone : {totalStoneCount}");
+        else
+        {
+            players[turn % 2].UpdateStoneCount();
+            totalStoneCount++;
+        }
+        Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {totalStoneCount}");
         turn++;
     }
 }

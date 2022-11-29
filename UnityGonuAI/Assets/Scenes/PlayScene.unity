@@ -222,7 +222,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &236869436
 Transform:
@@ -301,7 +301,8 @@ GameObject:
   m_Component:
   - component: {fileID: 268010531}
   - component: {fileID: 268010530}
-  m_Layer: 0
+  - component: {fileID: 268010532}
+  m_Layer: 8
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +376,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &268010532
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268010529}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &396471456
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +449,8 @@ GameObject:
   m_Component:
   - component: {fileID: 443410676}
   - component: {fileID: 443410675}
-  m_Layer: 0
+  - component: {fileID: 443410677}
+  m_Layer: 8
   m_Name: Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,6 +524,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &443410677
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443410674}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +634,8 @@ GameObject:
   m_Component:
   - component: {fileID: 685448748}
   - component: {fileID: 685448747}
-  m_Layer: 0
+  - component: {fileID: 685448749}
+  m_Layer: 8
   m_Name: Point (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,6 +709,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &685448749
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685448746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &722330668
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +740,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &722330669
 Transform:
@@ -874,7 +925,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &818118078
 SpriteRenderer:
@@ -959,7 +1010,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &884240502
 Transform:
@@ -1038,7 +1089,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1343666083}
   - component: {fileID: 1343666082}
-  m_Layer: 0
+  - component: {fileID: 1343666084}
+  m_Layer: 8
   m_Name: Point (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1112,6 +1164,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1343666084
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343666081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1347116255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1195,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1347116256
 SpriteRenderer:
@@ -1211,7 +1279,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1459828839
 SpriteRenderer:
@@ -1290,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1487758438}
   - component: {fileID: 1487758437}
+  - component: {fileID: 1487758439}
   m_Layer: 8
   m_Name: Point (1)
   m_TagString: Untagged
@@ -1364,6 +1433,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1487758439
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487758436}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1497170196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1464,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1497170197
 SpriteRenderer:
@@ -1458,7 +1543,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1519497802}
   - component: {fileID: 1519497801}
-  m_Layer: 0
+  - component: {fileID: 1519497803}
+  m_Layer: 8
   m_Name: Point (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1532,6 +1618,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1519497803
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519497800}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1641006163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1649,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1641006164
 SpriteRenderer:
@@ -1626,7 +1728,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1645499671}
   - component: {fileID: 1645499670}
-  m_Layer: 0
+  - component: {fileID: 1645499672}
+  m_Layer: 8
   m_Name: Point (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,6 +1803,22 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1645499672
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645499669}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1748193640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1834,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1748193641
 SpriteRenderer:
@@ -1799,7 +1918,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &2009198240
 SpriteRenderer:
@@ -1928,7 +2047,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2133061539}
   - component: {fileID: 2133061538}
-  m_Layer: 0
+  - component: {fileID: 2133061540}
+  m_Layer: 8
   m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,3 +2122,19 @@ Transform:
   m_Father: {fileID: 88789046}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2133061540
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133061537}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.50000006

@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
 
     public int turn { private set; get; }
     public int phase { private set; get; }
-    
+
+    [SerializeField]
+    private Player[] players = new Player[2];
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,16 @@ public class GameManager : MonoBehaviour
         {
             playerName = "black";
         }
-        Debug.Log($"{turn} : {playerName}");
-        turn++;        
+        players[turn % 2].UpdateStoneCount();
+
+
+        int totalStoneCount = 0;
+        for (int i=0; i < players.Length; i++)
+        {
+            totalStoneCount += players[i].onBoardStoneCount;   
+        }
+
+        Debug.Log($"{turn} : {playerName} / playerOnboardStone : {players[turn % 2].onBoardStoneCount} /total stone : {totalStoneCount}");
+        turn++;
     }
 }

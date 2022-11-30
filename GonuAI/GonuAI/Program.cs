@@ -39,16 +39,10 @@ namespace GonuAI
             Console.WriteLine("원하는 동작을 선택하세요.");
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("1) Start Dynamic Programming.");
-            Console.WriteLine("2) Save Dynamic Porgramming Value Function.");
-            Console.WriteLine("3) Load Dynamic Porgramming Value Function.");
-            Console.WriteLine("4) Start SARSA.");
-            Console.WriteLine("5) Save SARSA Value Function.");
-            Console.WriteLine("6) Load SARSA Value Function.");
-            Console.WriteLine("7) Start Q-Learning.");
-            Console.WriteLine("8) Save Q-Learning Value Function.");
-            Console.WriteLine("9) Load Q-Learning Value Function.");
-            Console.WriteLine("10) Start Game");
-            Console.WriteLine("11) Exit");
+            Console.WriteLine("2) Start SARSA.");
+            Console.WriteLine("3) Start Q-Learning.");
+            Console.WriteLine("4) Start Game");
+            Console.WriteLine("5) Exit");
             Console.WriteLine(Environment.NewLine);
             Console.Write("Input : ");
 
@@ -58,27 +52,16 @@ namespace GonuAI
                     dpManager.UpdateByDP();
                     return true;
                 case "2":
-                    return true;
-                case "3":
-                    return true;
-                case "4":
                     sarsaManger.UpdateSARSA();
                     return true;
-                case "5":
-                    return true;
-                case "6":
-                    return true;
-                case "7":
+                case "3":
                     qLearningManager.UpdateByQLearning();
                     return true;
-                case "8":
-                    return true;
-                case "9":
-                    return true;
-                case "10":
+                case "4":
                     gameManager.PlayGame();
                     return true;
-                case "11":
+                case "5" +
+                "":
                     return false;
                 default:
                     return true;

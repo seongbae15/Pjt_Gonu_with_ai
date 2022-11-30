@@ -64,18 +64,21 @@ public class GameManager : MonoBehaviour
     {
         if (GetTotalStoneCount() == maxStoneLimit)
         {
-            string color = "";
-            switch (turn % 2)
+            if ((collider.CompareTag("BlackStone") && turn % 2 == 1) || (collider.CompareTag("WhiteStone") && turn % 2 == 0))
             {
-                case 0:
-                    color = "white";
-                    break;
-                case 1:
-                    color = "black";
-                    break;
+                string color = "";
+                switch (turn % 2)
+                {
+                    case 0:
+                        color = "white";
+                        break;
+                    case 1:
+                        color = "black";
+                        break;
+                }
+                Debug.Log($"{turn} : {color} Stone Select");
+                turn++;
             }
-            Debug.Log($"{turn} : {color} Stone Select");
-            turn++;
         }
     }
 

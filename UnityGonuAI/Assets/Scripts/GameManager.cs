@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public int phase { private set; get; }
     [SerializeField]
     private Player[] players = new Player[2];
-    private int totalStoneCount = 0;
     private int maxStoneLimit = 8;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             playerName = "black";
         }
-        if (totalStoneCount == maxStoneLimit)
+        if (GetTotalStoneCount() == maxStoneLimit)
         {
             // Phase 2
             Debug.Log("This is Phase 2");
@@ -56,15 +55,14 @@ public class GameManager : MonoBehaviour
         else
         {
             players[turn % 2].PlaceStone(stonePlaceTransform);
-            totalStoneCount++;
-            Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {totalStoneCount}");
+            Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {GetTotalStoneCount()}");
             turn++;
         }
     }
 
     public void SelectStone(Collider2D collider)
     {
-        if (totalStoneCount == maxStoneLimit)
+        if (GetTotalStoneCount() == maxStoneLimit)
         {
             string color = "";
             switch (turn % 2)
@@ -79,5 +77,15 @@ public class GameManager : MonoBehaviour
             Debug.Log($"{turn} : {color} Stone Select");
             turn++;
         }
+    }
+
+    private int GetTotalStoneCount()
+    {
+        int count = 0;
+        for (int i = 0; i < players.Length; i++)
+        {
+            count += players[i].onStoneCount;
+        }
+        return count;
     }
 }

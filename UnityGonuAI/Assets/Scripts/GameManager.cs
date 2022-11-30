@@ -57,8 +57,27 @@ public class GameManager : MonoBehaviour
         {
             players[turn % 2].PlaceStone(stonePlaceTransform);
             totalStoneCount++;
+            Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {totalStoneCount}");
             turn++;
         }
-        Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {totalStoneCount}");
+    }
+
+    public void SelectStone(Collider2D collider)
+    {
+        if (totalStoneCount == maxStoneLimit)
+        {
+            string color = "";
+            switch (turn % 2)
+            {
+                case 0:
+                    color = "white";
+                    break;
+                case 1:
+                    color = "black";
+                    break;
+            }
+            Debug.Log($"{turn} : {color} Stone Select");
+            turn++;
+        }
     }
 }

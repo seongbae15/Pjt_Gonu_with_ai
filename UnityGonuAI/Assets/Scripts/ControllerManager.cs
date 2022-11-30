@@ -22,7 +22,7 @@ public class ControllerManager : MonoBehaviour
 
             if (hitStone)
             {
-                Debug.Log("Try Again other places");
+                GameManager.Instance.SelectStone(hitStone.collider);
             }
             else if (hitPoint)
             {

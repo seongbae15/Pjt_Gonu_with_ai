@@ -425,6 +425,9 @@ MonoBehaviour:
   players:
   - {fileID: 1270431075}
   - {fileID: 55408466}
+  stones:
+  - {fileID: 7396064151395285025, guid: e7af45be6c208f247bda52f2051f8e68, type: 3}
+  - {fileID: 8481261315675674448, guid: ce37081e79c800643944f1f08272c727, type: 3}
 --- !u!4 &396471458
 Transform:
   m_ObjectHideFlags: 0

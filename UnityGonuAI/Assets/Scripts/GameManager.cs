@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public int phase { private set; get; }
     [SerializeField]
     private Player[] players = new Player[2];
+    [SerializeField]
+    private GameObject[] stones = new GameObject[2];
+
     private int maxStoneLimit = 8;
     // Start is called before the first frame update
     void Start()
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Instantiate(stones[turn % 2], stonePlaceTransform);
+            Debug.Log("Create Stone");
             players[turn % 2].PlaceStone(stonePlaceTransform);
             Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {GetTotalStoneCount()}");
             turn++;
@@ -76,8 +81,12 @@ public class GameManager : MonoBehaviour
                         color = "black";
                         break;
                 }
-                Debug.Log($"{turn} : {color} Stone Select");
-                turn++;
+                // Move Stone
+                //// Check hasStone
+                players[turn % 2].UpdateHasStoneState(collider.gameObject);
+                //// 
+
+                //turn++;
             }
         }
     }

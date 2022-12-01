@@ -25,17 +25,12 @@ public class GameManager : MonoBehaviour
     private GameObject[] stones = new GameObject[2];
 
     private int maxStoneLimit = 8;
+
     // Start is called before the first frame update
     void Start()
     {
         turn = 1;
         phase = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlaceStone(Transform pointTransform)
@@ -58,6 +53,11 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(stones[turn % 2], pointTransform);
             players[turn % 2].PlaceStone(pointTransform);
+            if (GetTotalStoneCount() == maxStoneLimit)
+            {
+                phase = 2;
+                UIManager.Instance.UpdatePhase(phase);
+            }
             turn++;
         }
     }

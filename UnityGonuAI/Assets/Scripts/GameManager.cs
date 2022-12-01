@@ -40,16 +40,6 @@ public class GameManager : MonoBehaviour
 
     public void PlaceStone(Transform stonePlaceTransform)
     {
-        string playerName = "";
-        // Phase 1
-        if (turn % 2 == 0)
-        {
-            playerName = "white";
-        }
-        else
-        {
-            playerName = "black";
-        }
         if (GetTotalStoneCount() == maxStoneLimit)
         {
             // Phase 2

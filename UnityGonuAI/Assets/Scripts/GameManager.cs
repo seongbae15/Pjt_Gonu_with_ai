@@ -58,9 +58,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Instantiate(stones[turn % 2], stonePlaceTransform);
-            Debug.Log("Create Stone");
             players[turn % 2].PlaceStone(stonePlaceTransform);
-            Debug.Log($"{turn} : {playerName} / playerOnStone : {players[turn % 2].onStoneCount} /total stone : {GetTotalStoneCount()}");
             turn++;
         }
     }

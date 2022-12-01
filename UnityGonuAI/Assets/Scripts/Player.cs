@@ -32,14 +32,12 @@ public class Player : MonoBehaviour
         if (!havingStone)
         {
             havingStone = selectedGameObject;
-            Debug.Log("Select");
         }
         else
         {
             if (havingStone == selectedGameObject)
             {
                 havingStone = null;
-                Debug.Log("Cancel");
             }
         }
     }

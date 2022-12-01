@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     public string playerName { get; private set; }
     public int onStoneCount { get; private set; }
 
-    private GameObject havingStone = null;
+    public GameObject havingStone { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
         playerName = " ";
+        havingStone = null;
     }
 
     public void PlaceStone(Transform stonePlaceTransform)
@@ -41,4 +42,12 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void MoveStone(Transform pointTransform)
+    {
+        havingStone.transform.position = pointTransform.position;
+        Debug.Log(pointTransform.position);
+        havingStone = null;
+    }
+
 }

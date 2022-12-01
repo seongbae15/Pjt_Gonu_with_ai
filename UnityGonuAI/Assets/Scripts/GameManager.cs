@@ -38,17 +38,26 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void PlaceStone(Transform stonePlaceTransform)
+    public void PlaceStone(Transform pointTransform)
     {
         if (GetTotalStoneCount() == maxStoneLimit)
         {
             // Phase 2
-            Debug.Log("This is Phase 2");
+            if (players[turn % 2].havingStone)
+            {
+                players[turn % 2].MoveStone(pointTransform);
+                turn++;
+            }
+            else
+            {
+                Debug.Log($"{turn}");
+                Debug.Log("Select Stone!");
+            }
         }
         else
         {
-            Instantiate(stones[turn % 2], stonePlaceTransform);
-            players[turn % 2].PlaceStone(stonePlaceTransform);
+            Instantiate(stones[turn % 2], pointTransform);
+            players[turn % 2].PlaceStone(pointTransform);
             turn++;
         }
     }

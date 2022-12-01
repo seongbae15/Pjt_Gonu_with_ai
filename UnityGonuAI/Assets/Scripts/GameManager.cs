@@ -69,22 +69,7 @@ public class GameManager : MonoBehaviour
         {
             if ((collider.CompareTag("BlackStone") && turn % 2 == 1) || (collider.CompareTag("WhiteStone") && turn % 2 == 0))
             {
-                string color = "";
-                switch (turn % 2)
-                {
-                    case 0:
-                        color = "white";
-                        break;
-                    case 1:
-                        color = "black";
-                        break;
-                }
-                // Move Stone
-                //// Check hasStone
-                players[turn % 2].UpdateHasStoneState(collider.gameObject);
-                //// 
-
-                //turn++;
+                players[turn % 2].UpdateStoneSelection(collider.gameObject);
             }
         }
     }

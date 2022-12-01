@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         onStoneCount++;
     }
 
-    public void UpdateHasStoneState(GameObject selectedGameObject)
+    public void UpdateStoneSelection(GameObject selectedGameObject)
     {
         //hasStone = hasStone ? false : true;
         if (!havingStone)

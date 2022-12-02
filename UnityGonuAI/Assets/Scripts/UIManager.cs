@@ -61,4 +61,13 @@ public class UIManager : MonoBehaviour
         endDisp.SetActive(true);
 
     }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

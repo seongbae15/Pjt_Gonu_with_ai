@@ -69,16 +69,8 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         UIManager.Instance.DisplayGameEndScreen(turn);
-                        //UnityEditor.EditorApplication.isPlaying = false;
                     }
                 }
-                else
-                    Debug.Log("Can't Move");
-            }
-            else
-            {
-                Debug.Log($"{turn}");
-                Debug.Log("Select Stone!");
             }
         }
         else
@@ -99,7 +91,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 UIManager.Instance.DisplayGameEndScreen(turn);
-                //UnityEditor.EditorApplication.isPlaying = false;
             }
 
         }

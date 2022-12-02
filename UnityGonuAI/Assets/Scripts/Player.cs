@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
 
     public void UpdateStoneSelection(GameObject selectedGameObject)
     {
-        //hasStone = hasStone ? false : true;
         if (!havingStone)
         {
             havingStone = selectedGameObject;

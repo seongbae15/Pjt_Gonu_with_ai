@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,9 +18,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int turn { private set; get; }
+    private int turn;
     public int phase { private set; get; }
-
+    public bool isGameEnd { private set; get; }
     [SerializeField]
     private BoardManager boardManager;
     [SerializeField]
@@ -28,13 +29,23 @@ public class GameManager : MonoBehaviour
     private GameObject[] stones = new GameObject[2];
 
     private int maxStoneLimit = 8;
-
+    private List<int>[] checks = { new List<int>() { 0, 1, 2 },
+                                    new List<int>() { 3, 4, 5 },
+                                    new List<int>() { 6, 7, 8 },
+                                    new List<int>() { 0, 3, 6 },
+                                    new List<int>() { 1, 4, 7 },
+                                    new List<int>() { 2, 5, 8 },
+                                    new List<int>() { 0, 4, 8 },
+                                    new List<int>() { 2, 4, 6 },
+                                    };
+    
 
     // Start is called before the first frame update
     void Start()
     {
         turn = 1;
         phase = 1;
+        isGameEnd = false;
     }
 
     public void PlaceStone(Transform pointTransform)
@@ -48,9 +59,18 @@ public class GameManager : MonoBehaviour
                 int nextPoint = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
                 if (boardManager.IsValidConnection(curPoint, nextPoint))
                 {
-                    Debug.Log("Move");
                     players[turn % 2].MoveStone(pointTransform);
-                    turn++;
+
+                    isGameEnd = CheckGameEndState();
+                    if (!isGameEnd)
+                    {
+                        turn++;
+                    }
+                    else
+                    {
+                        UIManager.Instance.DisplayGameEndScreen(turn);
+                        //UnityEditor.EditorApplication.isPlaying = false;
+                    }
                 }
                 else
                     Debug.Log("Can't Move");
@@ -65,12 +85,23 @@ public class GameManager : MonoBehaviour
         {
             GameObject stone = Instantiate(stones[turn % 2], pointTransform);
             players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-            if (GetTotalStoneCount() == maxStoneLimit)
+            
+            isGameEnd = CheckGameEndState();
+            if (!isGameEnd)
             {
-                phase = 2;
-                UIManager.Instance.UpdatePhase(phase);
+                if (GetTotalStoneCount() == maxStoneLimit)
+                {
+                    phase = 2;
+                    UIManager.Instance.UpdatePhase(phase);
+                }
+                turn++;
             }
-            turn++;
+            else
+            {
+                UIManager.Instance.DisplayGameEndScreen(turn);
+                //UnityEditor.EditorApplication.isPlaying = false;
+            }
+
         }
     }
 
@@ -93,5 +124,19 @@ public class GameManager : MonoBehaviour
             count += players[i].onStoneCount;
         }
         return count;
+    }
+
+    private bool CheckGameEndState()
+    {
+        List<int> stonePositions = players[turn % 2].GetStonePositions();
+        if (stonePositions.Count >= 3)
+        {
+            for (int i = 0; i < checks.Length; i++)
+            {
+                if (checks[i].All(checkPoint => stonePositions.Contains(checkPoint)))
+                    return true;
+            }
+        }
+        return false;
     }
 }

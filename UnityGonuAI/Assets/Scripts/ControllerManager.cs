@@ -14,20 +14,23 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!GameManager.Instance.isGameEnd)
         {
-            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hitPoint = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, pointLayerMask);
-            RaycastHit2D hitStone = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, stoneLayerMask);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hitPoint = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, pointLayerMask);
+                RaycastHit2D hitStone = Physics2D.Raycast(worldPoint, Vector2.zero, Mathf.Infinity, stoneLayerMask);
 
-            if (hitStone)
-            {
-                GameManager.Instance.SelectStone(hitStone.collider);
-            }
-            else if (hitPoint)
-            {
-                Transform stonePlaceTransform = hitPoint.transform;
-                GameManager.Instance.PlaceStone(stonePlaceTransform);
+                if (hitStone)
+                {
+                    GameManager.Instance.SelectStone(hitStone.collider);
+                }
+                else if (hitPoint)
+                {
+                    Transform stonePlaceTransform = hitPoint.transform;
+                    GameManager.Instance.PlaceStone(stonePlaceTransform);
+                }
             }
         }
     }

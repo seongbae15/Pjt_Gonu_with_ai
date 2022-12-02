@@ -62,4 +62,16 @@ public class Player : MonoBehaviour
         havingStone = null;
     }
 
+    public List<int> GetStonePositions()
+    {
+        List<int> stonePositions = new List<int>();
+        for (int i = 0; i < stones.Length; i++)
+        {
+            if (stones[i] != null)
+            {
+                stonePositions.Add(i);
+            }
+        }
+        return stonePositions;
+    }
 }

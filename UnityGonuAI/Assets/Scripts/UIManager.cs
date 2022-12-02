@@ -23,11 +23,16 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI phaseText;
     [SerializeField]
     private TextMeshProUGUI[] playerNames = new TextMeshProUGUI[2];
+    [SerializeField]
+    private GameObject endDisp;
+    [SerializeField]
+    private TextMeshProUGUI endText;
 
     // Start is called before the first frame update
     void Start()
     {
         UpdatePhase(1);
+        endDisp.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,5 +44,21 @@ public class UIManager : MonoBehaviour
     public void UpdatePhase(int phase)
     {
         phaseText.text = $"Phase : {phase}";
+    }
+
+    public void DisplayGameEndScreen(int turn)
+    {
+        string winnerName = "";
+        if (turn % 2 == 0)
+        {
+            winnerName = "White";
+        }
+        else
+        {
+            winnerName = "Black";
+        }
+        endText.text = $"{winnerName} is Winner!!!!";
+        endDisp.SetActive(true);
+
     }
 }

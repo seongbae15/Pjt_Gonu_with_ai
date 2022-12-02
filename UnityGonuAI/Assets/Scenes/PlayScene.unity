@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88789045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -207,6 +207,50 @@ Transform:
   m_Father: {fileID: 818118079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &173112587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173112588}
+  - component: {fileID: 173112589}
+  m_Layer: 0
+  m_Name: BoardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &173112588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173112587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00000023841858, y: -0.00000023841858, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173112589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173112587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd15f3ef0b2834b40a7cfb18a20628f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236869435
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +346,7 @@ GameObject:
   - component: {fileID: 268010531}
   - component: {fileID: 268010530}
   - component: {fileID: 268010532}
+  - component: {fileID: 268010533}
   m_Layer: 8
   m_Name: Point (2)
   m_TagString: Untagged
@@ -392,6 +437,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &268010533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268010529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 2
 --- !u!1 &348170608
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1586976acf5ea4fa1a81cf3409aaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardManager: {fileID: 173112589}
   players:
   - {fileID: 1270431075}
   - {fileID: 55408466}
@@ -588,6 +647,7 @@ GameObject:
   - component: {fileID: 443410676}
   - component: {fileID: 443410675}
   - component: {fileID: 443410677}
+  - component: {fileID: 443410678}
   m_Layer: 8
   m_Name: Point (4)
   m_TagString: Untagged
@@ -678,6 +738,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &443410678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443410674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +981,7 @@ GameObject:
   - component: {fileID: 685448748}
   - component: {fileID: 685448747}
   - component: {fileID: 685448749}
+  - component: {fileID: 685448750}
   m_Layer: 8
   m_Name: Point (6)
   m_TagString: Untagged
@@ -998,6 +1072,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &685448750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685448746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 6
 --- !u!1 &722330668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1180,7 @@ GameObject:
   - component: {fileID: 762457597}
   - component: {fileID: 762457596}
   - component: {fileID: 762457598}
+  - component: {fileID: 762457599}
   m_Layer: 8
   m_Name: Point
   m_TagString: Untagged
@@ -1183,6 +1271,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &762457599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762457595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 0
 --- !u!1 &818118077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,7 +1394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884240501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1356,11 +1457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1490,7 +1591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330209687
@@ -1540,8 +1641,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1601,6 +1702,7 @@ GameObject:
   - component: {fileID: 1343666083}
   - component: {fileID: 1343666082}
   - component: {fileID: 1343666084}
+  - component: {fileID: 1343666085}
   m_Layer: 8
   m_Name: Point (7)
   m_TagString: Untagged
@@ -1691,6 +1793,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &1343666085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343666081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 7
 --- !u!1 &1347116255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1985,7 @@ GameObject:
   - component: {fileID: 1487758438}
   - component: {fileID: 1487758437}
   - component: {fileID: 1487758439}
+  - component: {fileID: 1487758440}
   m_Layer: 8
   m_Name: Point (1)
   m_TagString: Untagged
@@ -1960,6 +2076,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &1487758440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487758436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 1
 --- !u!1 &1497170196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2184,7 @@ GameObject:
   - component: {fileID: 1519497802}
   - component: {fileID: 1519497801}
   - component: {fileID: 1519497803}
+  - component: {fileID: 1519497804}
   m_Layer: 8
   m_Name: Point (5)
   m_TagString: Untagged
@@ -2145,6 +2275,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &1519497804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519497800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 5
 --- !u!1 &1641006163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2383,7 @@ GameObject:
   - component: {fileID: 1645499671}
   - component: {fileID: 1645499670}
   - component: {fileID: 1645499672}
+  - component: {fileID: 1645499673}
   m_Layer: 8
   m_Name: Point (8)
   m_TagString: Untagged
@@ -2330,6 +2474,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &1645499673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645499669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 8
 --- !u!1 &1747692325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2832,7 @@ GameObject:
   - component: {fileID: 2133061539}
   - component: {fileID: 2133061538}
   - component: {fileID: 2133061540}
+  - component: {fileID: 2133061541}
   m_Layer: 8
   m_Name: Point (3)
   m_TagString: Untagged
@@ -2765,3 +2923,16 @@ CircleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &2133061541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133061537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointNumber: 3

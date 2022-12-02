@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     public GameObject havingStone { get; private set; }
 
+    private GameObject[] stones = new GameObject[9];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +19,15 @@ public class Player : MonoBehaviour
         havingStone = null;
     }
 
-    public void PlaceStone(Transform stonePlaceTransform)
+    public void PlaceStone(GameObject stone, int pointNumber)
     {
-        UpdateStoneCount();
+        UpdateStoneInfo(stone, pointNumber);
     }
 
-    private void UpdateStoneCount()
+    private void UpdateStoneInfo(GameObject stone, int pointNumber)
     {
+        stones[pointNumber] = stone;
+        stones[pointNumber].GetComponent<Stone>().UpdateStonePositionNumber(pointNumber);
         onStoneCount++;
     }
 
@@ -40,13 +44,21 @@ public class Player : MonoBehaviour
             {
                 havingStone = null;
             }
+            else
+            {
+                havingStone = selectedGameObject;
+            }
         }
     }
 
     public void MoveStone(Transform pointTransform)
     {
         havingStone.transform.position = pointTransform.position;
-        Debug.Log(pointTransform.position);
+        int oldPointNumber = havingStone.gameObject.GetComponent<Stone>().stonePositionNumber;
+        int newPointNumber = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
+        havingStone.gameObject.GetComponent<Stone>().UpdateStonePositionNumber(oldPointNumber);
+        stones[newPointNumber] = havingStone.gameObject;
+        stones[oldPointNumber] = null;
         havingStone = null;
     }
 

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    private void OnMouseDown()
+    [SerializeField]
+    private int pointNumber;
+
+    public int GetPointNumber()
     {
-        Debug.Log("Clicked");
+        return pointNumber;
     }
 }

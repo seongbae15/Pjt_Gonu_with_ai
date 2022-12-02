@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    private int position = -1;
-    // Start is called before the first frame update
-    void Start()
+    public int stonePositionNumber { private set; get; }
+
+    private void Start()
     {
-        
+    }
+    public void UpdateStonePositionNumber(int pointNumber)
+    {
+        stonePositionNumber = pointNumber;
+    }
+
+    public int GetStonePositionNumber()
+    {
+        return stonePositionNumber;
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public PlayerType playerType { get; private set; }
     public string playerName { get; private set; }
     public int onStoneCount { get; private set; }
 
@@ -17,6 +18,28 @@ public class Player : MonoBehaviour
     {
         playerName = " ";
         havingStone = null;
+    }
+
+    public void SetPlayerType(PlayerType playerType)
+    {
+        this.playerType = playerType;
+        if (this.playerType != PlayerType.HUMAN)
+        {
+            Debug.Log("I'm AI");
+            switch (playerType)
+            {
+                case PlayerType.DP:
+                    break;
+                case PlayerType.SARSA:
+                    break;
+                case PlayerType.QLEARNING:
+                    break;                   
+            }
+        }
+        else
+        {
+            Debug.Log("I'm Human");
+        }
     }
 
     public void PlaceStone(GameObject stone, int pointNumber)

@@ -42,6 +42,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // 학습 알고리즘 추가.
+        PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
+        PlayerType whiteType = GetPlayerType(PlayerPrefs.GetInt("White"));
+
+        players[0].SetPlayerType(blackType);
+        players[1].SetPlayerType(whiteType);
+    }
+
+    private PlayerType GetPlayerType(int playerTypeNumber)
+    {
+        return (PlayerType)playerTypeNumber;
     }
 
     void Start()
@@ -49,11 +59,6 @@ public class GameManager : MonoBehaviour
         turn = 1;
         phase = 1;
         isGameEnd = false;
-    }
-
-    public void Init()
-    {
-
     }
 
     public void PlaceStone(Transform pointTransform)

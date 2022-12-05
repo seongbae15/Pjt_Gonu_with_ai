@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI menuSelectTitle;
 
-    private int playerSelectioin = 1;
+    private int playerSelectionTurn = 1;
     private string playerColor = "Black";
 
     private void Awake()
@@ -33,20 +33,20 @@ public class MenuManager : MonoBehaviour
 
     public void SetPlayerType(int playerType)
     {
-        if (playerSelectioin >= 3)
+        if (playerSelectionTurn >= 3)
             return;
         PlayerPrefs.SetInt($"{GetPlayerColorName()}", playerType);
-        playerSelectioin++;
-
-        if (playerSelectioin >= 3)
-            return;
+        playerSelectionTurn++;
         menuSelectTitle.text = $"Select Player({GetPlayerColorName()})";
 
+        if (playerSelectionTurn == 3)
+            menuSelectTitle.text = $"Complete Player Selection.";
+    
     }
 
     private string GetPlayerColorName()
     {
-        if (playerSelectioin == 1)
+        if (playerSelectionTurn == 1)
             return "Black";
         else
             return "White";

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -35,12 +36,6 @@ public class UIManager : MonoBehaviour
         endDisp.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdatePhase(int phase)
     {
         phaseText.text = $"Phase : {phase}";
@@ -61,7 +56,10 @@ public class UIManager : MonoBehaviour
         endDisp.SetActive(true);
 
     }
-
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void ExitGame()
     {
 #if UNITY_EDITOR

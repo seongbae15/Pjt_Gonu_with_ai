@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         isGameEnd = false;
     }
 
+    public void Init()
+    {
+
+    }
+
     public void PlaceStone(Transform pointTransform)
     {
         if (GetTotalStoneCount() == maxStoneLimit)

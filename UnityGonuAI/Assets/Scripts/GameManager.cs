@@ -38,9 +38,12 @@ public class GameManager : MonoBehaviour
                                     new List<int>() { 0, 4, 8 },
                                     new List<int>() { 2, 4, 6 },
                                     };
-    
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        // 학습 알고리즘 추가.
+    }
+
     void Start()
     {
         turn = 1;

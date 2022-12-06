@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameObject havingStone { get; private set; }
 
     private GameObject[] stones = new GameObject[9];
+    private LearningManager learningManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,26 +21,43 @@ public class Player : MonoBehaviour
         havingStone = null;
     }
 
-    public void SetPlayerType(PlayerType playerType)
+    public void Init(PlayerType playerType)
     {
-        this.playerType = playerType;
+        SetPlayerType(playerType);
+
         if (this.playerType != PlayerType.HUMAN)
         {
             Debug.Log("I'm AI");
-            switch (playerType)
-            {
-                case PlayerType.DP:
-                    break;
-                case PlayerType.SARSA:
-                    break;
-                case PlayerType.QLEARNING:
-                    break;                   
-            }
+            SetLearningManager();
         }
         else
         {
             Debug.Log("I'm Human");
         }
+    }
+
+    private void SetPlayerType(PlayerType playerType)
+    {
+        this.playerType = playerType;
+    }
+
+    private void SetLearningManager()
+    {
+        switch (this.playerType)
+        {
+            case PlayerType.DP:
+                learningManager = new DPManager();
+                break;
+            case PlayerType.SARSA:
+                learningManager = new SARSAManager();
+                break;
+            case PlayerType.QLEARNING:
+                learningManager = new QLearningManager();
+                break;
+        }
+        learningManager.InitValueFunction();
+        learningManager.StartLearning();
+
     }
 
     public void PlaceStone(GameObject stone, int pointNumber)

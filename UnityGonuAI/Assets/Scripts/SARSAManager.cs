@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SARSAManager : LearningManager
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InitValueFunction()
     {
-        
+        Debug.Log("Init SARSA");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void StartLearning()
     {
-        
+        Debug.Log("START SARSA");
+
     }
+
 }

@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class DPManager : LearningManager
 {
-    // Start is called before the first frame update
-    void Start()
+    public Dictionary<int, float> stateValueFunction { get; private set; }
+
+    private int[] pos = new int[8];
+
+    public DPManager()
     {
-        
+        stateValueFunction = new Dictionary<int, float>();
+    }
+    public override void InitValueFunction()
+    {
+        for (int i=0; i<pos.Length; i++)
+        {
+            pos[i] = 0;
+        }
+        stateValueFunction.Clear();
+        Debug.Log("Init DP");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void StartLearning()
     {
-        
+        Debug.Log("Start DP");
+
     }
 }

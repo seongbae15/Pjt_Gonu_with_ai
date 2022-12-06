@@ -41,12 +41,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // 학습 알고리즘 추가.
         PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
         PlayerType whiteType = GetPlayerType(PlayerPrefs.GetInt("White"));
 
-        players[0].SetPlayerType(blackType);
-        players[1].SetPlayerType(whiteType);
+        //Player 상태 초기화
+        players[1].Init(blackType);
+        players[0].Init(whiteType);
+
     }
 
     private PlayerType GetPlayerType(int playerTypeNumber)

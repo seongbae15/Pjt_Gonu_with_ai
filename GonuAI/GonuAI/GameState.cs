@@ -60,7 +60,6 @@ namespace GonuAI
 
             for (int i = 8; i>=0; i--)
             {
-                // 아래 코드 분석 다시 해보기.(돌 숫자 늘리는 부분 이상?
                 int boardValue = boardValueProcessing % 3;
                 boardValueProcessing = boardValueProcessing / 3;
 

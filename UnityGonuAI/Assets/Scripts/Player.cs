@@ -27,12 +27,11 @@ public class Player : MonoBehaviour
 
         if (this.playerType != PlayerType.HUMAN)
         {
-            Debug.Log("I'm AI");
             SetLearningManager();
         }
         else
         {
-            Debug.Log("I'm Human");
+
         }
     }
 

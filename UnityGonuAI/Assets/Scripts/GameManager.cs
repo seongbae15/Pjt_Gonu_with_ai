@@ -39,28 +39,10 @@ public class GameManager : MonoBehaviour
                                     new List<int>() { 2, 4, 6 },
                                     };
 
-    private DPManager dpManagper = new DPManager();
-    private SARSAManager sarsaManager = new SARSAManager();
-    private QLearningManager qlearningManager = new QLearningManager();
-
-
     private void Awake()
     {
         PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
         PlayerType whiteType = GetPlayerType(PlayerPrefs.GetInt("White"));
-
-        if (blackType == PlayerType.DP || whiteType == PlayerType.DP)
-        {
-            dpManagper.InitValueFunction();
-        }
-        if (blackType == PlayerType.SARSA || whiteType == PlayerType.SARSA)
-        {
-            sarsaManager.InitValueFunction();
-        }
-        if (blackType == PlayerType.QLEARNING || whiteType == PlayerType.QLEARNING)
-        {
-            qlearningManager.InitValueFunction();
-        }
 
         //Player 상태 초기화
         players[1].Init(blackType);

@@ -13,16 +13,12 @@ public class Player : MonoBehaviour
 
     private GameObject[] stones = new GameObject[9];
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerName = " ";
-        havingStone = null;
-    }
 
     public void Init(PlayerType playerType)
     {
         SetPlayerType(playerType);
+        playerName = " ";
+        havingStone = null;
     }
 
     private void SetPlayerType(PlayerType playerType)

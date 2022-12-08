@@ -4,6 +4,5 @@ using UnityEngine;
 
 public abstract class LearningManager : MonoBehaviour
 {
-    public abstract void InitValueFunction();
-    public abstract void StartLearning();
+    public abstract void ApplyTrain();
 }

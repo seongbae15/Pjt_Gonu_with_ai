@@ -18,16 +18,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int turn;
     public int phase { private set; get; }
     public bool isGameEnd { private set; get; }
+
     [SerializeField]
     private BoardManager boardManager;
     [SerializeField]
     private Player[] players = new Player[2];
     [SerializeField]
     private GameObject[] stones = new GameObject[2];
+    [SerializeField]
+    private DPManager dpManager;
 
+    private int turn;
     private int maxStoneLimit = 8;
     private List<int>[] checks = { new List<int>() { 0, 1, 2 },
                                     new List<int>() { 3, 4, 5 },
@@ -39,10 +42,26 @@ public class GameManager : MonoBehaviour
                                     new List<int>() { 2, 4, 6 },
                                     };
 
+
     private void Awake()
     {
         PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
         PlayerType whiteType = GetPlayerType(PlayerPrefs.GetInt("White"));
+
+        // Init AI
+        if (blackType == PlayerType.DP || whiteType == PlayerType.DP)
+        {
+            dpManager.ApplyTrain();
+        }
+        if (blackType == PlayerType.SARSA || whiteType == PlayerType.SARSA)
+        {
+
+        }
+        if (blackType == PlayerType.QLEARNING || whiteType == PlayerType.QLEARNING)
+        {
+            
+        }
+
 
         //Player 상태 초기화
         players[1].Init(blackType);

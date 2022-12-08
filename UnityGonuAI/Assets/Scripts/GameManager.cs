@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private DPManager dpManager;
 
+    private GameState gonuState = new GameState();
     private int turn;
     private int maxStoneLimit = 8;
     private List<int>[] checks = { new List<int>() { 0, 1, 2 },
@@ -62,6 +64,9 @@ public class GameManager : MonoBehaviour
             
         }
 
+        turn = 1;
+        phase = 1;
+        isGameEnd = false;
 
         //Player 상태 초기화
         players[1].Init(blackType);
@@ -74,12 +79,31 @@ public class GameManager : MonoBehaviour
         return (PlayerType)playerTypeNumber;
     }
 
-    void Start()
+    private void Update()
     {
-        turn = 1;
-        phase = 1;
-        isGameEnd = false;
+        if (!isGameEnd)
+        {
+            // AI turn 일 때, 작업.
+            int aiMove = 0;
+            if (players[turn % 2].playerType != PlayerType.HUMAN)
+            {
+                switch (players[turn % 2].playerType)
+                {
+                    case PlayerType.DP:
+                        aiMove = dpManager.GetNextMove(gonuState.boardStateKey);
+                        break;
+                    case PlayerType.SARSA:
+                        break;
+                    case PlayerType.QLEARNING:
+                        break;
+                }
+                gonuState.MakeMove(aiMove);
+                turn++;
+                isGameEnd = CheckGameEndState();
+            }
+        }
     }
+
 
     public void PlaceStone(Transform pointTransform)
     {
@@ -108,9 +132,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            // Phase 1
             GameObject stone = Instantiate(stones[turn % 2], pointTransform);
             players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-            
+            gonuState.MakeMove(pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
+
             isGameEnd = CheckGameEndState();
             if (!isGameEnd)
             {

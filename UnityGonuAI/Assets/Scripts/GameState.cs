@@ -57,6 +57,11 @@ public class GameState
         }
     }
 
+    public void UpdateCurGameState()
+    {
+
+    }
+
     public bool IsValidFirstPhase()
     {
         if (numberOfBlacks > 4)
@@ -187,7 +192,7 @@ public class GameState
         return nextState;
     }
 
-    private void MakeMove(int curPoint)
+    public void MakeMove(int curPoint)
     {
         if (IsValidFirstPhase())
         {

@@ -10,6 +10,7 @@ public class DPManager : LearningManager
     private int[] stoneCountState = new int[9];
     private Dictionary<int, float> stateValueFunction = new Dictionary<int, float>();
     private float discountFactor = 0.9f;
+    private static System.Random random = new System.Random();
 
     public override void ApplyTrain()
     {
@@ -152,5 +153,45 @@ public class DPManager : LearningManager
         }
         return 0f;
     }
+
+    public int GetNextMove(int boardStateKey)
+    {
+        IEnumerable<int> actionCandidates = GetNextMoveCandidate(boardStateKey);
+        if (actionCandidates.Count() == 0)
+            return 0;
+        return actionCandidates.ElementAt(random.Next(0, actionCandidates.Count()));
+    }
+
+    private IEnumerable<int> GetNextMoveCandidate(int boardStateKey)
+    {
+        float selectedExpectation = 0f;
+        GameState gameState = new GameState(boardStateKey);
+        Dictionary<int, float> actionCandidateDictionary = new Dictionary<int, float>();
+
+        for (int i = GameParameters.actionMinNumber; i <= GameParameters.actionmaxNumber; i++)
+        {
+            if (gameState.IsValidMove(i))
+            {
+                GameState nextState = gameState.GetNextState(i);
+                float reward = nextState.GetReward();
+                float actionExpectation = reward + discountFactor * stateValueFunction[nextState.boardStateKey];
+                actionCandidateDictionary.Add(i, actionExpectation);
+            }
+        }
+
+        if (actionCandidateDictionary.Count == 0)
+            return new List<int>();
+
+        if (gameState.turn == (int)GameStone.BLACK)
+        {
+            selectedExpectation = actionCandidateDictionary.Select(e => e.Value).Max();
+        }
+        else if (gameState.turn == (int)GameStone.WHITE)
+        {
+            selectedExpectation = actionCandidateDictionary.Select(e => e.Value).Min();
+        }
+        return actionCandidateDictionary.Where(e => e.Value == selectedExpectation).Select(e => e.Key);
+    }
+
 
 }

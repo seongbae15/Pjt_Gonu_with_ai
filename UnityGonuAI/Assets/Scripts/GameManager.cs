@@ -19,23 +19,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private GameObject[] stones = new GameObject[2];
+    [SerializeField]
+    private DPManager dpManager;
+
     private GameState gonuState = new GameState();
+    private int turn;
+    public int phase { private set; get; }
 
     // 삭제 예정 변수
-    public int phase { private set; get; }
     public bool isGameEnd { private set; get; }
 
     [SerializeField]
     private BoardManager boardManager;
     [SerializeField]
     private Player[] players = new Player[2];
-    [SerializeField]
-    private GameObject[] stones = new GameObject[2];
-    [SerializeField]
-    private DPManager dpManager;
 
     
-    private int turn;
     //private int maxStoneLimit = 8;
     private List<int>[] checks = { new List<int>() { 0, 1, 2 },
                                     new List<int>() { 3, 4, 5 },

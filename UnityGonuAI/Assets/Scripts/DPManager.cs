@@ -133,7 +133,7 @@ public class DPManager : LearningManager
 
         List<float> actionExpectationList = new List<float>();
 
-        for (int i = GameParameters.actionMinNumber; i <= GameParameters.actionmaxNumber; i++)
+        for (int i = GameParameters.actionMinNumber; i <= GameParameters.actionMaxNumber; i++)
         {
             if (gameState.IsValidMove(i))
             {
@@ -168,7 +168,7 @@ public class DPManager : LearningManager
         GameState gameState = new GameState(boardStateKey);
         Dictionary<int, float> actionCandidateDictionary = new Dictionary<int, float>();
 
-        for (int i = GameParameters.actionMinNumber; i <= GameParameters.actionmaxNumber; i++)
+        for (int i = GameParameters.actionMinNumber; i <= GameParameters.actionMaxNumber; i++)
         {
             if (gameState.IsValidMove(i))
             {

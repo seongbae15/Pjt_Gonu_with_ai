@@ -25,8 +25,8 @@ public class GameParameters : MonoBehaviour
     }
     
     public const int totalStateCount = 19560;
-    public const int actionMinNumber = 0;
-    public const int actionmaxNumber = 8;
+    public const int actionMinNumber = 1;
+    public const int actionMaxNumber = 9;
     //public readonly static List<int>[] endChecker = { new List<int>() { 0, 1, 2 },
     //                                new List<int>() { 3, 4, 5 },
     //                                new List<int>() { 6, 7, 8 },

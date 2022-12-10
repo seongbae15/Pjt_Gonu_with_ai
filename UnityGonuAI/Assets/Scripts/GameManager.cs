@@ -32,25 +32,6 @@ public class GameManager : MonoBehaviour
     public int phase { private set; get; }
     public bool isGameEnd { private set; get; }
 
-    //// 삭제 예정 변수
-
-    //[SerializeField]
-    //private BoardManager boardManager;
-    //[SerializeField]
-    //private Player[] players = new Player[2];
-
-    
-    ////private int maxStoneLimit = 8;
-    //private List<int>[] checks = { new List<int>() { 0, 1, 2 },
-    //                                new List<int>() { 3, 4, 5 },
-    //                                new List<int>() { 6, 7, 8 },
-    //                                new List<int>() { 0, 3, 6 },
-    //                                new List<int>() { 1, 4, 7 },
-    //                                new List<int>() { 2, 5, 8 },
-    //                                new List<int>() { 0, 4, 8 },
-    //                                new List<int>() { 2, 4, 6 },
-    //                                };
-
 
     private void Awake()
     {

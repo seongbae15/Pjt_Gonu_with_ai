@@ -20,4 +20,8 @@ public class Stone : MonoBehaviour
             stoneColor = (int)GameStone.BLACK;
         }
     }
+    public void UpdateStoneInfo(int pointNumber)
+    {
+        stonePositionNumber = pointNumber;
+    }
 }

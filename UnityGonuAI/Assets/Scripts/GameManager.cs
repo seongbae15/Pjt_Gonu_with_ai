@@ -144,11 +144,11 @@ public class GameManager : MonoBehaviour
                 if (gonuState.IsValidMove(selectedStone.stonePositionNumber))
                 {
                     gonuState.MakeMove(selectedStone.stonePositionNumber);
-                    Destroy(stoneTransform.gameObject);
+                    //Destroy(stoneTransform.gameObject);
                     Transform newPointTransform = GameParameters.Instance.GetPointTransform(gonuState.temp - 1);
-
-                    GameObject stone = Instantiate(stones[turn % 2], newPointTransform.position, newPointTransform.localRotation);
-                    stone.GetComponent<Stone>().UpdateStoneInfo(gonuState.temp, turn);
+                    //GameObject stone = Instantiate(stones[turn % 2], newPointTransform.position, newPointTransform.localRotation);
+                    stoneTransform.position = newPointTransform.position;
+                    stoneTransform.gameObject.GetComponent<Stone>().UpdateStoneInfo(gonuState.temp);
                     CheckGameEnd();
                 }
             }

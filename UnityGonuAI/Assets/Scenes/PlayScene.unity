@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 268010532}
   - component: {fileID: 268010533}
   m_Layer: 8
-  m_Name: Point (2)
+  m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 2
+  pointNumber: 3
 --- !u!1 &348170608
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 443410677}
   - component: {fileID: 443410678}
   m_Layer: 8
-  m_Name: Point (4)
+  m_Name: Point5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 4
+  pointNumber: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 685448749}
   - component: {fileID: 685448750}
   m_Layer: 8
-  m_Name: Point (6)
+  m_Name: Point7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 6
+  pointNumber: 7
 --- !u!1 &686307214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 762457598}
   - component: {fileID: 762457599}
   m_Layer: 8
-  m_Name: Point
+  m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 0
+  pointNumber: 1
 --- !u!1 &774821071
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,7 +2401,7 @@ GameObject:
   - component: {fileID: 1343666084}
   - component: {fileID: 1343666085}
   m_Layer: 8
-  m_Name: Point (7)
+  m_Name: Point8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 7
+  pointNumber: 8
 --- !u!1 &1347116255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2684,7 @@ GameObject:
   - component: {fileID: 1487758439}
   - component: {fileID: 1487758440}
   m_Layer: 8
-  m_Name: Point (1)
+  m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 1
+  pointNumber: 2
 --- !u!1 &1497170196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,7 +3018,7 @@ GameObject:
   - component: {fileID: 1519497803}
   - component: {fileID: 1519497804}
   m_Layer: 8
-  m_Name: Point (5)
+  m_Name: Point6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 5
+  pointNumber: 6
 --- !u!1 &1641006163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,7 +3217,7 @@ GameObject:
   - component: {fileID: 1645499672}
   - component: {fileID: 1645499673}
   m_Layer: 8
-  m_Name: Point (8)
+  m_Name: Point9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3318,7 +3318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 8
+  pointNumber: 9
 --- !u!1 &1747692325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,7 +3668,7 @@ GameObject:
   - component: {fileID: 2133061540}
   - component: {fileID: 2133061541}
   m_Layer: 8
-  m_Name: Point (3)
+  m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3769,4 +3769,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8b1b6ffbe7b54785908e7b15d5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointNumber: 3
+  pointNumber: 4
+--- !u!1001 &5250070179742340861
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 762457597}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[1]
+      value: 
+      objectReference: {fileID: 1487758438}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[2]
+      value: 
+      objectReference: {fileID: 268010531}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[3]
+      value: 
+      objectReference: {fileID: 2133061539}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[4]
+      value: 
+      objectReference: {fileID: 443410676}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[5]
+      value: 
+      objectReference: {fileID: 1519497802}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[6]
+      value: 
+      objectReference: {fileID: 685448748}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[7]
+      value: 
+      objectReference: {fileID: 1343666083}
+    - target: {fileID: 2058413738703100212, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: pointTransforms.Array.data[8]
+      value: 
+      objectReference: {fileID: 1645499671}
+    - target: {fileID: 2058413738703100213, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_Name
+      value: GameParams
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058413738703100215, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 949bd53ae4e09b34a97ffa14f49b7676, type: 3}

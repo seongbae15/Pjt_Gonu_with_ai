@@ -10,9 +10,10 @@ public class GameState
 
     public int boardStateKey { private set; get; }
     public int turn { private set; get; }
+    public int gameWinner { private set; get; }
+    public int temp { private set; get; }
 
     private int[] boardState = new int[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    private int gameWinner;
 
     public GameState()
     {
@@ -149,11 +150,11 @@ public class GameState
                 return true;
             }
         }
-        else if (boardState[0] == boardState[4] && boardState[4] == boardState[8])
+        else if (boardState[2] == boardState[4] && boardState[4] == boardState[6])
         {
-            if (boardState[0] != 0)
+            if (boardState[2] != 0)
             {
-                gameWinner = boardState[0];
+                gameWinner = boardState[2];
                 return true;
             }
         }
@@ -164,20 +165,20 @@ public class GameState
     {
         if (IsValidFirstPhase())
         {
-            if (boardState[curPoint] == 0)
+            if (boardState[curPoint-1] == 0)
                 return true;
         }
         else if (IsValidSecondPhase())
         {
-            if (boardState[curPoint] != turn)
+            if (boardState[curPoint-1] != turn)
                 return false;
 
             IEnumerable<int> connectedPoints = GameParameters.connectedPointsDict[curPoint];
-            IEnumerable<int> connectedEmptyPoints = connectedPoints.Where(p => boardState[p] == 0);
+            IEnumerable<int> connectedEmptyPoints = connectedPoints.Where(p => boardState[p-1] == 0);
             
             if (connectedEmptyPoints.Count() > 0)
             {
-                IEnumerable<int> connectedOpponents = connectedPoints.Where(p => boardState[p] != turn);
+                IEnumerable<int> connectedOpponents = connectedPoints.Where(p => boardState[p-1] != turn);
                 if (connectedOpponents.Count() > 0)
                     return true;
             }
@@ -196,6 +197,7 @@ public class GameState
     {
         if (IsValidFirstPhase())
         {
+            curPoint -= 1;
             boardState[curPoint] = turn;
             if (turn == 1)
             {
@@ -212,30 +214,42 @@ public class GameState
             int emptyPoint = 0;
             foreach (int connectedPoint in connectedPoints)
             {
-                if (boardState[connectedPoint] == 0)
+                if (boardState[connectedPoint - 1] == 0)
                 {
                     emptyPoint = connectedPoint;
                     break;
                 }
             }
-            boardState[curPoint] = 0;
-            boardState[emptyPoint] = turn;
+            boardState[curPoint - 1] = 0;
+            boardState[emptyPoint - 1] = turn;
+            temp = emptyPoint;
         }
-        if (turn == 1)
-        {
-            turn = 2;
-        }
-        else if (turn ==2)
-        {
-            turn = 1;
-        }
+        UpdateBoardStateKey();
+    }
+
+    private void UpdateBoardStateKey()
+    {
+        ChangeTurn();
+
         int curboardStateKey = 0;
-        for (int i=GameParameters.actionMinNumber; i <= GameParameters.actionmaxNumber; i++)
+        for (int i = 0; i < 9; i++)
         {
             curboardStateKey = curboardStateKey * 3;
             curboardStateKey = curboardStateKey + boardState[i];
         }
         boardStateKey = curboardStateKey * 3 + turn;
+
+    }
+    private void ChangeTurn()
+    {
+        if (turn == 1)
+        {
+            turn = 2;
+        }
+        else if (turn == 2)
+        {
+            turn = 1;
+        }
     }
 
     public float GetReward()

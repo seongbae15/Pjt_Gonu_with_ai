@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private GameState gonuState = new GameState();
+
+    // 삭제 예정 변수
     public int phase { private set; get; }
     public bool isGameEnd { private set; get; }
 
@@ -31,9 +34,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private DPManager dpManager;
 
-    private GameState gonuState = new GameState();
+    
     private int turn;
-    private int maxStoneLimit = 8;
+    //private int maxStoneLimit = 8;
     private List<int>[] checks = { new List<int>() { 0, 1, 2 },
                                     new List<int>() { 3, 4, 5 },
                                     new List<int>() { 6, 7, 8 },
@@ -98,8 +101,18 @@ public class GameManager : MonoBehaviour
                         break;
                 }
                 gonuState.MakeMove(aiMove);
+                Transform pointTransform = GameParameters.Instance.GetPointTransform(aiMove);
+                GameObject stone = null;
+                stone = Instantiate(stones[turn % 2], pointTransform);
+
+
+                //players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
+
                 turn++;
-                isGameEnd = CheckGameEndState();
+
+
+                //isGameEnd = CheckGameEndState();
+
             }
         }
     }
@@ -107,86 +120,164 @@ public class GameManager : MonoBehaviour
 
     public void PlaceStone(Transform pointTransform)
     {
-        if (GetTotalStoneCount() == maxStoneLimit)
+        if (gonuState.gameWinner == 0)
         {
-            // Phase 2
-            if (players[turn % 2].havingStone)
+            if (gonuState.IsValidFirstPhase())
             {
-                int curPoint = players[turn % 2].havingStone.GetComponent<Stone>().stonePositionNumber;
-                int nextPoint = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
-                if (boardManager.IsValidConnection(curPoint, nextPoint))
-                {
-                    players[turn % 2].MoveStone(pointTransform);
+                int pointNumber = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
+                gonuState.MakeMove(pointNumber);
+                GameObject stone = Instantiate(stones[turn % 2], pointTransform.position, pointTransform.localRotation);
+                stone.GetComponent<Stone>().UpdateStoneInfo(pointNumber, turn);
 
-                    isGameEnd = CheckGameEndState();
-                    if (!isGameEnd)
-                    {
-                        turn++;
-                    }
-                    else
-                    {
-                        UIManager.Instance.DisplayGameEndScreen(turn);
-                    }
-                }
+                CheckGameEnd();
             }
+        }
+
+        //if (GetTotalStoneCount() == maxStoneLimit)
+        //{
+        //    // Phase 2
+        //    if (players[turn % 2].havingStone)
+        //    {
+        //        int curPoint = players[turn % 2].havingStone.GetComponent<Stone>().stonePositionNumber;
+        //        int nextPoint = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
+        //        if (boardManager.IsValidConnection(curPoint, nextPoint))
+        //        {
+        //            players[turn % 2].MoveStone(pointTransform);
+
+        //            isGameEnd = CheckGameEndState();
+        //            if (!isGameEnd)
+        //            {
+        //                turn++;
+        //            }
+        //            else
+        //            {
+        //                UIManager.Instance.DisplayGameEndScreen(turn);
+        //            }
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    // Phase 1
+        //    GameObject stone = Instantiate(stones[turn % 2], pointTransform.position, pointTransform.localRotation);
+        //    players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
+        //    gonuState.MakeMove(pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
+
+        //    isGameEnd = CheckGameEndState();
+        //    if (!isGameEnd)
+        //    {
+        //        if (GetTotalStoneCount() == maxStoneLimit)
+        //        {
+        //            phase = 2;
+        //            UIManager.Instance.UpdatePhase(phase);
+        //        }
+        //        turn++;
+        //    }
+        //    else
+        //    {
+        //        UIManager.Instance.DisplayGameEndScreen(turn);
+        //    }
+
+        //}
+    }
+
+    public void MoveStone(Transform stoneTransform)
+    {
+        if (gonuState.IsValidSecondPhase())
+        {
+            Stone selectedStone = stoneTransform.gameObject.GetComponent<Stone>();
+            if ((selectedStone.stoneColor % 2) == (turn % 2))
+            {
+                if (gonuState.IsValidMove(selectedStone.stonePositionNumber))
+                {
+                    gonuState.MakeMove(selectedStone.stonePositionNumber);
+                    Destroy(stoneTransform.gameObject);
+                    Transform newPointTransform = GameParameters.Instance.GetPointTransform(gonuState.temp - 1);
+
+                    GameObject stone = Instantiate(stones[turn % 2], newPointTransform.position, newPointTransform.localRotation);
+                    stone.GetComponent<Stone>().UpdateStoneInfo(gonuState.temp, turn);
+                    CheckGameEnd();
+                }
+
+            }
+            //
+            //int curPoint = players[turn % 2].havingStone.GetComponent<Stone>().stonePositionNumber;
+            //int nextPoint = stoneTransform.gameObject.GetComponent<Point>().GetPointNumber();
+
+
+            //if (boardManager.IsValidConnection(curPoint, nextPoint))
+            //{
+
+
+            //    //players[turn % 2].MoveStone(pointTransform);
+
+
+
+            //    //isGameEnd = CheckGameEndState();
+
+
+            //    if (!isGameEnd)
+            //    {
+            //        turn++;
+            //    }
+            //    else
+            //    {
+            //        UIManager.Instance.DisplayGameEndScreen(turn);
+            //    }
+            //}
+        }
+
+    }
+
+    private void CheckGameEnd()
+    {
+        if (gonuState.IsFinalState())
+        {
+            UIManager.Instance.DisplayGameEndScreen(gonuState.gameWinner);
         }
         else
         {
-            // Phase 1
-            GameObject stone = Instantiate(stones[turn % 2], pointTransform);
-            players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-            gonuState.MakeMove(pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-
-            isGameEnd = CheckGameEndState();
-            if (!isGameEnd)
+            if (gonuState.IsValidSecondPhase())
             {
-                if (GetTotalStoneCount() == maxStoneLimit)
-                {
-                    phase = 2;
-                    UIManager.Instance.UpdatePhase(phase);
-                }
-                turn++;
+                phase = 2;
+                UIManager.Instance.UpdatePhase(phase);
             }
-            else
-            {
-                UIManager.Instance.DisplayGameEndScreen(turn);
-            }
-
+            turn++;
         }
     }
 
     public void SelectStone(Collider2D collider)
     {
-        if (GetTotalStoneCount() == maxStoneLimit)
+        if (gonuState.IsValidSecondPhase())
         {
-            if ((collider.CompareTag("BlackStone") && turn % 2 == 1) || (collider.CompareTag("WhiteStone") && turn % 2 == 0))
+            if ((collider.CompareTag("BlackStone") && (turn % 2 == 1)) || (collider.CompareTag("WhiteStone") && (turn % 2 == 0)))
             {
                 players[turn % 2].UpdateStoneSelection(collider.gameObject);
             }
         }
     }
 
-    private int GetTotalStoneCount()
-    {
-        int count = 0;
-        for (int i = 0; i < players.Length; i++)
-        {
-            count += players[i].onStoneCount;
-        }
-        return count;
-    }
+    //private int GetTotalStoneCount()
+    //{
+    //    int count = 0;
+    //    for (int i = 0; i < players.Length; i++)
+    //    {
+    //        count += players[i].onStoneCount;
+    //    }
+    //    return count;
+    //}
 
-    private bool CheckGameEndState()
-    {
-        List<int> stonePositions = players[turn % 2].GetStonePositions();
-        if (stonePositions.Count >= 3)
-        {
-            for (int i = 0; i < checks.Length; i++)
-            {
-                if (checks[i].All(checkPoint => stonePositions.Contains(checkPoint)))
-                    return true;
-            }
-        }
-        return false;
-    }
+    //private bool CheckGameEndState()
+    //{
+    //    List<int> stonePositions = players[turn % 2].GetStonePositions();
+    //    if (stonePositions.Count >= 3)
+    //    {
+    //        for (int i = 0; i < checks.Length; i++)
+    //        {
+    //            if (checks[i].All(checkPoint => stonePositions.Contains(checkPoint)))
+    //                return true;
+    //        }
+    //    }
+    //    return false;
+    //}
 }

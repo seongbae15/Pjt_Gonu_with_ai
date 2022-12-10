@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public GameObject havingStone { get; private set; }
 
-    private GameObject[] stones = new GameObject[9];
+    //private GameObject[] stones = new GameObject[9];
 
 
     public void Init(PlayerType playerType)
@@ -27,17 +27,17 @@ public class Player : MonoBehaviour
     }
 
 
-    public void PlaceStone(GameObject stone, int pointNumber)
-    {
-        UpdateStoneInfo(stone, pointNumber);
-    }
+    //public void PlaceStone(GameObject stone, int pointNumber)
+    //{
+    //    UpdateStoneInfo(stone, pointNumber);
+    //}
 
-    private void UpdateStoneInfo(GameObject stone, int pointNumber)
-    {
-        stones[pointNumber] = stone;
-        stones[pointNumber].GetComponent<Stone>().UpdateStonePositionNumber(pointNumber);
-        onStoneCount++;
-    }
+    //private void UpdateStoneInfo(GameObject stone, int pointNumber)
+    //{
+    //    stones[pointNumber] = stone;
+    //    stones[pointNumber].GetComponent<Stone>().UpdateStonePositionNumber(pointNumber);
+    //    onStoneCount++;
+    //}
 
     public void UpdateStoneSelection(GameObject selectedGameObject)
     {
@@ -58,27 +58,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MoveStone(Transform pointTransform)
-    {
-        havingStone.transform.position = pointTransform.position;
-        int oldPointNumber = havingStone.gameObject.GetComponent<Stone>().stonePositionNumber;
-        int newPointNumber = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
-        havingStone.gameObject.GetComponent<Stone>().UpdateStonePositionNumber(oldPointNumber);
-        stones[newPointNumber] = havingStone.gameObject;
-        stones[oldPointNumber] = null;
-        havingStone = null;
-    }
+    //public void MoveStone(Transform pointTransform)
+    //{
+    //    havingStone.transform.position = pointTransform.position;
+    //    int oldPointNumber = havingStone.gameObject.GetComponent<Stone>().stonePositionNumber;
+    //    int newPointNumber = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
+    //    havingStone.gameObject.GetComponent<Stone>().UpdateStonePositionNumber(oldPointNumber);
+    //    stones[newPointNumber] = havingStone.gameObject;
+    //    stones[oldPointNumber] = null;
+    //    havingStone = null;
+    //}
 
-    public List<int> GetStonePositions()
-    {
-        List<int> stonePositions = new List<int>();
-        for (int i = 0; i < stones.Length; i++)
-        {
-            if (stones[i] != null)
-            {
-                stonePositions.Add(i);
-            }
-        }
-        return stonePositions;
-    }
+    //public List<int> GetStonePositions()
+    //{
+    //    List<int> stonePositions = new List<int>();
+    //    for (int i = 0; i < stones.Length; i++)
+    //    {
+    //        if (stones[i] != null)
+    //        {
+    //            stonePositions.Add(i);
+    //        }
+    //    }
+    //    return stonePositions;
+    //}
 }

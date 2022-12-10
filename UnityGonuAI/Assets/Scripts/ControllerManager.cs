@@ -24,12 +24,11 @@ public class ControllerManager : MonoBehaviour
 
                 if (hitStone)
                 {
-                    GameManager.Instance.SelectStone(hitStone.collider);
+                    GameManager.Instance.MoveStone(hitStone.transform);
                 }
                 else if (hitPoint)
                 {
-                    Transform stonePlaceTransform = hitPoint.transform;
-                    GameManager.Instance.PlaceStone(stonePlaceTransform);
+                    GameManager.Instance.PlaceStone(hitPoint.transform);
                 }
             }
         }

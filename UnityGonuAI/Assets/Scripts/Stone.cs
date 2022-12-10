@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Stone : MonoBehaviour
 {
     public int stonePositionNumber { private set; get; }
+    public int stoneColor { private set; get; }
 
-    private void Start()
-    {
-    }
-    public void UpdateStonePositionNumber(int pointNumber)
+    public void UpdateStoneInfo(int pointNumber, int turn)
     {
         stonePositionNumber = pointNumber;
+        if (turn % 2 == 0)
+        {
+            stoneColor = (int)GameStone.WHITE;
+        }
+        else
+        {
+            stoneColor = (int)GameStone.BLACK;
+        }
     }
-
-    public int GetStonePositionNumber()
-    {
-        return stonePositionNumber;
-    }
-
 }

@@ -41,20 +41,19 @@ public class UIManager : MonoBehaviour
         phaseText.text = $"Phase : {phase}";
     }
 
-    public void DisplayGameEndScreen(int turn)
+    public void DisplayGameEndScreen(int gameWinner)
     {
         string winnerName = "";
-        if (turn % 2 == 0)
+        if (gameWinner == (int)GameStone.WHITE)
         {
             winnerName = "White";
         }
-        else
+        else if (gameWinner == (int)GameStone.BLACK)
         {
             winnerName = "Black";
         }
         endText.text = $"{winnerName} is Winner!!!!";
         endDisp.SetActive(true);
-
     }
     public void RestartGame()
     {

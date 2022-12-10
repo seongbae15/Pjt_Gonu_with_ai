@@ -19,63 +19,62 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private GameState gonuState = new GameState();
+    private int turn;
+    private PlayerType[] playerTypes = new PlayerType[2];
+    private GameObject[] stonesOnBoard = new GameObject[9];
+
     [SerializeField]
     private GameObject[] stones = new GameObject[2];
     [SerializeField]
     private DPManager dpManager;
 
-    private GameState gonuState = new GameState();
-    private int turn;
     public int phase { private set; get; }
-
-    // 삭제 예정 변수
     public bool isGameEnd { private set; get; }
 
-    [SerializeField]
-    private BoardManager boardManager;
-    [SerializeField]
-    private Player[] players = new Player[2];
+    //// 삭제 예정 변수
+
+    //[SerializeField]
+    //private BoardManager boardManager;
+    //[SerializeField]
+    //private Player[] players = new Player[2];
 
     
-    //private int maxStoneLimit = 8;
-    private List<int>[] checks = { new List<int>() { 0, 1, 2 },
-                                    new List<int>() { 3, 4, 5 },
-                                    new List<int>() { 6, 7, 8 },
-                                    new List<int>() { 0, 3, 6 },
-                                    new List<int>() { 1, 4, 7 },
-                                    new List<int>() { 2, 5, 8 },
-                                    new List<int>() { 0, 4, 8 },
-                                    new List<int>() { 2, 4, 6 },
-                                    };
+    ////private int maxStoneLimit = 8;
+    //private List<int>[] checks = { new List<int>() { 0, 1, 2 },
+    //                                new List<int>() { 3, 4, 5 },
+    //                                new List<int>() { 6, 7, 8 },
+    //                                new List<int>() { 0, 3, 6 },
+    //                                new List<int>() { 1, 4, 7 },
+    //                                new List<int>() { 2, 5, 8 },
+    //                                new List<int>() { 0, 4, 8 },
+    //                                new List<int>() { 2, 4, 6 },
+    //                                };
 
 
     private void Awake()
     {
-        PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
         PlayerType whiteType = GetPlayerType(PlayerPrefs.GetInt("White"));
+        PlayerType blackType = GetPlayerType(PlayerPrefs.GetInt("Black"));
+        playerTypes[0] = GetPlayerType(PlayerPrefs.GetInt("White"));
+        playerTypes[1] = GetPlayerType(PlayerPrefs.GetInt("Black"));
 
         // Init AI
-        if (blackType == PlayerType.DP || whiteType == PlayerType.DP)
+        if (playerTypes[0] == PlayerType.DP || playerTypes[1] == PlayerType.DP)
         {
             dpManager.ApplyTrain();
         }
-        if (blackType == PlayerType.SARSA || whiteType == PlayerType.SARSA)
+        if (playerTypes[0] == PlayerType.SARSA || playerTypes[1] == PlayerType.SARSA)
         {
 
         }
-        if (blackType == PlayerType.QLEARNING || whiteType == PlayerType.QLEARNING)
+        if (playerTypes[0] == PlayerType.QLEARNING || playerTypes[1] == PlayerType.QLEARNING)
         {
             
         }
 
         turn = 1;
         phase = 1;
-        isGameEnd = false;
-
-        //Player 상태 초기화
-        players[1].Init(blackType);
-        players[0].Init(whiteType);
-
     }
 
     private PlayerType GetPlayerType(int playerTypeNumber)
@@ -85,13 +84,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameEnd)
+        if (gonuState.gameWinner == 0)
         {
-            // AI turn 일 때, 작업.
             int aiMove = 0;
-            if (players[turn % 2].playerType != PlayerType.HUMAN)
+            if (playerTypes[turn % 2] != PlayerType.HUMAN)
             {
-                switch (players[turn % 2].playerType)
+                switch (playerTypes[turn % 2])
                 {
                     case PlayerType.DP:
                         aiMove = dpManager.GetNextMove(gonuState.boardStateKey);
@@ -101,19 +99,33 @@ public class GameManager : MonoBehaviour
                     case PlayerType.QLEARNING:
                         break;
                 }
-                gonuState.MakeMove(aiMove);
-                Transform pointTransform = GameParameters.Instance.GetPointTransform(aiMove);
-                GameObject stone = null;
-                stone = Instantiate(stones[turn % 2], pointTransform);
-
-
-                //players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-
-                turn++;
-
-
-                //isGameEnd = CheckGameEndState();
-
+                if (gonuState.IsValidFirstPhase())
+                {
+                    gonuState.MakeMove(aiMove);
+                    Transform newPointTransform = GameParameters.Instance.GetPointTransform(aiMove);
+                    GameObject stone = Instantiate(stones[turn % 2], newPointTransform.position, newPointTransform.localRotation);
+                    stone.GetComponent<Stone>().UpdateStoneInfo(aiMove, turn);
+                    stonesOnBoard[aiMove - 1] = stone;
+                    CheckGameEnd();
+                }
+                else if (gonuState.IsValidSecondPhase())
+                {
+                    GameObject selectedStoneObject = stonesOnBoard[aiMove - 1];
+                    Stone selectedStone = selectedStoneObject.GetComponent<Stone>();
+                    if ((selectedStone.stoneColor % 2) == (turn % 2))
+                    {
+                        if (gonuState.IsValidMove(selectedStone.stonePositionNumber))
+                        {
+                            gonuState.MakeMove(aiMove);
+                            Transform newPointTransform = GameParameters.Instance.GetPointTransform(gonuState.temp);
+                            selectedStoneObject.transform.position = newPointTransform.position;
+                            selectedStone.UpdateStoneInfo(gonuState.temp);
+                            stonesOnBoard[selectedStone.stonePositionNumber - 1] = null;
+                            stonesOnBoard[gonuState.temp - 1] = selectedStoneObject;
+                            CheckGameEnd();
+                        }
+                    }
+                }
             }
         }
     }
@@ -129,7 +141,7 @@ public class GameManager : MonoBehaviour
                 gonuState.MakeMove(pointNumber);
                 GameObject stone = Instantiate(stones[turn % 2], pointTransform.position, pointTransform.localRotation);
                 stone.GetComponent<Stone>().UpdateStoneInfo(pointNumber, turn);
-
+                stonesOnBoard[pointNumber - 1] = stone;
                 CheckGameEnd();
             }
         }
@@ -145,9 +157,11 @@ public class GameManager : MonoBehaviour
                 if (gonuState.IsValidMove(selectedStone.stonePositionNumber))
                 {
                     gonuState.MakeMove(selectedStone.stonePositionNumber);
-                    Transform newPointTransform = GameParameters.Instance.GetPointTransform(gonuState.temp - 1);
+                    Transform newPointTransform = GameParameters.Instance.GetPointTransform(gonuState.temp);
                     stoneTransform.position = newPointTransform.position;
-                    stoneTransform.gameObject.GetComponent<Stone>().UpdateStoneInfo(gonuState.temp);
+                    selectedStone.UpdateStoneInfo(gonuState.temp);
+                    stonesOnBoard[selectedStone.stonePositionNumber - 1] = null;
+                    stonesOnBoard[gonuState.temp - 1] = stoneTransform.gameObject;
                     CheckGameEnd();
                 }
             }
@@ -158,6 +172,7 @@ public class GameManager : MonoBehaviour
     {
         if (gonuState.IsFinalState())
         {
+            isGameEnd = true;
             UIManager.Instance.DisplayGameEndScreen(gonuState.gameWinner);
         }
         else

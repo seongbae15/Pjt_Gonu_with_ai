@@ -27,16 +27,6 @@ public class GameParameters : MonoBehaviour
     public const int totalStateCount = 19560;
     public const int actionMinNumber = 1;
     public const int actionMaxNumber = 9;
-    //public readonly static List<int>[] endChecker = { new List<int>() { 0, 1, 2 },
-    //                                new List<int>() { 3, 4, 5 },
-    //                                new List<int>() { 6, 7, 8 },
-    //                                new List<int>() { 0, 3, 6 },
-    //                                new List<int>() { 1, 4, 7 },
-    //                                new List<int>() { 2, 5, 8 },
-    //                                new List<int>() { 0, 4, 8 },
-    //                                new List<int>() { 2, 4, 6 },
-    //                                };
-
     public readonly static Dictionary<int, List<int>> connectedPointsDict = new Dictionary<int, List<int>>{
                                                                         {1, new List<int> { 2, 4, 5 }},
                                                                         {2, new List<int> { 1, 3, 5 }},
@@ -53,6 +43,6 @@ public class GameParameters : MonoBehaviour
 
     public Transform GetPointTransform(int pointNumber)
     {
-        return pointTransforms[pointNumber];
+        return pointTransforms[pointNumber - 1];
     }
 }

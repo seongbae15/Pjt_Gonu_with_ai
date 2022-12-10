@@ -132,53 +132,6 @@ public class GameManager : MonoBehaviour
                 CheckGameEnd();
             }
         }
-
-        //if (GetTotalStoneCount() == maxStoneLimit)
-        //{
-        //    // Phase 2
-        //    if (players[turn % 2].havingStone)
-        //    {
-        //        int curPoint = players[turn % 2].havingStone.GetComponent<Stone>().stonePositionNumber;
-        //        int nextPoint = pointTransform.gameObject.GetComponent<Point>().GetPointNumber();
-        //        if (boardManager.IsValidConnection(curPoint, nextPoint))
-        //        {
-        //            players[turn % 2].MoveStone(pointTransform);
-
-        //            isGameEnd = CheckGameEndState();
-        //            if (!isGameEnd)
-        //            {
-        //                turn++;
-        //            }
-        //            else
-        //            {
-        //                UIManager.Instance.DisplayGameEndScreen(turn);
-        //            }
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    // Phase 1
-        //    GameObject stone = Instantiate(stones[turn % 2], pointTransform.position, pointTransform.localRotation);
-        //    players[turn % 2].PlaceStone(stone, pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-        //    gonuState.MakeMove(pointTransform.gameObject.GetComponent<Point>().GetPointNumber());
-
-        //    isGameEnd = CheckGameEndState();
-        //    if (!isGameEnd)
-        //    {
-        //        if (GetTotalStoneCount() == maxStoneLimit)
-        //        {
-        //            phase = 2;
-        //            UIManager.Instance.UpdatePhase(phase);
-        //        }
-        //        turn++;
-        //    }
-        //    else
-        //    {
-        //        UIManager.Instance.DisplayGameEndScreen(turn);
-        //    }
-
-        //}
     }
 
     public void MoveStone(Transform stoneTransform)
@@ -198,35 +151,8 @@ public class GameManager : MonoBehaviour
                     stone.GetComponent<Stone>().UpdateStoneInfo(gonuState.temp, turn);
                     CheckGameEnd();
                 }
-
             }
-            //
-            //int curPoint = players[turn % 2].havingStone.GetComponent<Stone>().stonePositionNumber;
-            //int nextPoint = stoneTransform.gameObject.GetComponent<Point>().GetPointNumber();
-
-
-            //if (boardManager.IsValidConnection(curPoint, nextPoint))
-            //{
-
-
-            //    //players[turn % 2].MoveStone(pointTransform);
-
-
-
-            //    //isGameEnd = CheckGameEndState();
-
-
-            //    if (!isGameEnd)
-            //    {
-            //        turn++;
-            //    }
-            //    else
-            //    {
-            //        UIManager.Instance.DisplayGameEndScreen(turn);
-            //    }
-            //}
         }
-
     }
 
     private void CheckGameEnd()
@@ -245,39 +171,4 @@ public class GameManager : MonoBehaviour
             turn++;
         }
     }
-
-    public void SelectStone(Collider2D collider)
-    {
-        if (gonuState.IsValidSecondPhase())
-        {
-            if ((collider.CompareTag("BlackStone") && (turn % 2 == 1)) || (collider.CompareTag("WhiteStone") && (turn % 2 == 0)))
-            {
-                players[turn % 2].UpdateStoneSelection(collider.gameObject);
-            }
-        }
-    }
-
-    //private int GetTotalStoneCount()
-    //{
-    //    int count = 0;
-    //    for (int i = 0; i < players.Length; i++)
-    //    {
-    //        count += players[i].onStoneCount;
-    //    }
-    //    return count;
-    //}
-
-    //private bool CheckGameEndState()
-    //{
-    //    List<int> stonePositions = players[turn % 2].GetStonePositions();
-    //    if (stonePositions.Count >= 3)
-    //    {
-    //        for (int i = 0; i < checks.Length; i++)
-    //        {
-    //            if (checks[i].All(checkPoint => stonePositions.Contains(checkPoint)))
-    //                return true;
-    //        }
-    //    }
-    //    return false;
-    //}
 }
